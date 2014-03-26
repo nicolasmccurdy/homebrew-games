@@ -7,7 +7,7 @@ def copy_without(source_path, target_path, exclude)
     target = source.sub(/^#{source_path}/, target_path)
     if File.directory? source
       Find.prune if File.basename(source) == exclude
-      FileUtils.mkdir target unless File.exists? target
+      FileUtils.mkdir target unless File.exist? target
     else
       FileUtils.copy source, target
     end
@@ -23,13 +23,13 @@ class Zork1 < Formula
   depends_on 'jzip'
 
   def install
-    FileUtils.makedirs("./share/zork1")
+    FileUtils.makedirs('./share/zork1')
     copy_without('.', './share/zork1', 'share')
-    file = File.new("zork1", "w+", 0755)
+    file = File.new('zork1', 'w+', 0755)
     file.write "#!/bin/bash
 jzip #{prefix}/share/zork1/DATA/ZORK1.DAT
 "
-    bin.install "zork1"
-    share.install "share/zork1"
+    bin.install 'zork1'
+    share.install 'share/zork1'
   end
 end

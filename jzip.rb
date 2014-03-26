@@ -11,15 +11,15 @@ class Jzip < Formula
   end
 
   def install
-    system "make -f unixio.mak"
+    system 'make -f unixio.mak'
 
-    bin.install "jzip"
-    bin.install "jzexe"
-    bin.install "ckifzs"
+    bin.install 'jzip'
+    bin.install 'jzexe'
+    bin.install 'ckifzs'
   end
 
   def test
-    system "jzip"
+    system 'jzip'
   end
 end
 
